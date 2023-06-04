@@ -11,15 +11,15 @@ import (
 )
 
 func Timer() {
-	if global.WUSHI_CONFIG.Timer.Start {
-		for i := range global.WUSHI_CONFIG.Timer.Detail {
+	if global.BODO_CONFIG.Timer.Start {
+		for i := range global.BODO_CONFIG.Timer.Detail {
 			go func(detail config.Detail) {
 				var option []cron.Option
-				if global.WUSHI_CONFIG.Timer.WithSeconds {
+				if global.BODO_CONFIG.Timer.WithSeconds {
 					option = append(option, cron.WithSeconds())
 				}
-				_, err := global.WUSHI_Timer.AddTaskByFunc("ClearDB", global.WUSHI_CONFIG.Timer.Spec, func() {
-					err := utils.ClearTable(global.WUSHI_DB, detail.TableName, detail.CompareField, detail.Interval)
+				_, err := global.BODO_Timer.AddTaskByFunc("ClearDB", global.BODO_CONFIG.Timer.Spec, func() {
+					err := utils.ClearTable(global.BODO_DB, detail.TableName, detail.CompareField, detail.Interval)
 					if err != nil {
 						fmt.Println("timer error:", err)
 					}
@@ -27,7 +27,7 @@ func Timer() {
 				if err != nil {
 					fmt.Println("add timer error:", err)
 				}
-			}(global.WUSHI_CONFIG.Timer.Detail[i])
+			}(global.BODO_CONFIG.Timer.Detail[i])
 		}
 	}
 }

@@ -1,12 +1,12 @@
 package system
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/common/response"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/system/request"
 	systemRes "github.com/wangrui19970405/wu-shi-admin/server/model/system/response"
 	"github.com/wangrui19970405/wu-shi-admin/server/utils"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
@@ -35,7 +35,7 @@ func (cas *CasbinApi) UpdateCasbin(c *gin.Context) {
 	}
 	err = casbinService.UpdateCasbin(cmr.AuthorityId, cmr.CasbinInfos)
 	if err != nil {
-		global.WUSHI_LOG.Error("更新失败!", zap.Error(err))
+		global.BODO_LOG.Error("更新失败!", zap.Error(err))
 		response.FailWithMessage("更新失败", c)
 		return
 	}

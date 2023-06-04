@@ -1,7 +1,7 @@
 package internal
 
 const (
-	ConfigEnv         = "WUSHI_CONFIG"
+	ConfigEnv         = "BODO_CONFIG"
 	ConfigDefaultFile = "config.yaml"
 	ConfigTestFile    = "config.test.yaml"
 	ConfigDebugFile   = "config.debug.yaml"

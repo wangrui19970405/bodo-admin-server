@@ -35,15 +35,15 @@ func (g *_gorm) Config(prefix string, singular bool) *gorm.Config {
 		Colorful:      true,
 	})
 	var logMode DBBASE
-	switch global.WUSHI_CONFIG.System.DbType {
+	switch global.BODO_CONFIG.System.DbType {
 	case "mysql":
-		logMode = &global.WUSHI_CONFIG.Mysql
+		logMode = &global.BODO_CONFIG.Mysql
 	case "pgsql":
-		logMode = &global.WUSHI_CONFIG.Pgsql
+		logMode = &global.BODO_CONFIG.Pgsql
 	case "oracle":
-		logMode = &global.WUSHI_CONFIG.Oracle
+		logMode = &global.BODO_CONFIG.Oracle
 	default:
-		logMode = &global.WUSHI_CONFIG.Mysql
+		logMode = &global.BODO_CONFIG.Mysql
 	}
 
 	switch logMode.GetLogMode() {

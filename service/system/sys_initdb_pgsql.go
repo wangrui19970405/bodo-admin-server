@@ -28,14 +28,14 @@ func (h PgsqlInitHandler) WriteConfig(ctx context.Context) error {
 	if !ok {
 		return errors.New("postgresql config invalid")
 	}
-	global.WUSHI_CONFIG.System.DbType = "pgsql"
-	global.WUSHI_CONFIG.Pgsql = c
-	global.WUSHI_CONFIG.JWT.SigningKey = uuid.NewV4().String()
-	cs := utils.StructToMap(global.WUSHI_CONFIG)
+	global.BODO_CONFIG.System.DbType = "pgsql"
+	global.BODO_CONFIG.Pgsql = c
+	global.BODO_CONFIG.JWT.SigningKey = uuid.NewV4().String()
+	cs := utils.StructToMap(global.BODO_CONFIG)
 	for k, v := range cs {
-		global.WUSHI_VP.Set(k, v)
+		global.BODO_VP.Set(k, v)
 	}
-	return global.WUSHI_VP.WriteConfig()
+	return global.BODO_VP.WriteConfig()
 }
 
 // EnsureDB 创建数据库并初始化 pg

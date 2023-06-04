@@ -10,7 +10,7 @@ import (
 )
 
 func Redis() {
-	redisCfg := global.WUSHI_CONFIG.Redis
+	redisCfg := global.BODO_CONFIG.Redis
 	client := redis.NewClient(&redis.Options{
 		Addr:     redisCfg.Addr,
 		Password: redisCfg.Password, // no password set
@@ -18,9 +18,9 @@ func Redis() {
 	})
 	pong, err := client.Ping(context.Background()).Result()
 	if err != nil {
-		global.WUSHI_LOG.Error("redis connect ping failed, err:", zap.Error(err))
+		global.BODO_LOG.Error("redis connect ping failed, err:", zap.Error(err))
 	} else {
-		global.WUSHI_LOG.Info("redis connect ping response:", zap.String("pong", pong))
-		global.WUSHI_REDIS = client
+		global.BODO_LOG.Info("redis connect ping response:", zap.String("pong", pong))
+		global.BODO_REDIS = client
 	}
 }

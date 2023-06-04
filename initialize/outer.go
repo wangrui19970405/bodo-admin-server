@@ -8,11 +8,11 @@ import (
 )
 
 func OtherInit() {
-	dr, err := utils.ParseDuration(global.WUSHI_CONFIG.JWT.ExpiresTime)
+	dr, err := utils.ParseDuration(global.BODO_CONFIG.JWT.ExpiresTime)
 	if err != nil {
 		panic(err)
 	}
-	_, err = utils.ParseDuration(global.WUSHI_CONFIG.JWT.BufferTime)
+	_, err = utils.ParseDuration(global.BODO_CONFIG.JWT.BufferTime)
 	if err != nil {
 		panic(err)
 	}

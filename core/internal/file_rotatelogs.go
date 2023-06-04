@@ -17,12 +17,12 @@ type fileRotatelogs struct{}
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 func (r *fileRotatelogs) GetWriteSyncer(level string) (zapcore.WriteSyncer, error) {
 	fileWriter, err := rotatelogs.New(
-		path.Join(global.WUSHI_CONFIG.Zap.Director, "%Y-%m-%d", level+".log"),
+		path.Join(global.BODO_CONFIG.Zap.Director, "%Y-%m-%d", level+".log"),
 		rotatelogs.WithClock(rotatelogs.Local),
-		rotatelogs.WithMaxAge(time.Duration(global.WUSHI_CONFIG.Zap.MaxAge)*24*time.Hour), // 日志留存时间
+		rotatelogs.WithMaxAge(time.Duration(global.BODO_CONFIG.Zap.MaxAge)*24*time.Hour), // 日志留存时间
 		rotatelogs.WithRotationTime(time.Hour*24),
 	)
-	if global.WUSHI_CONFIG.Zap.LogInConsole {
+	if global.BODO_CONFIG.Zap.LogInConsole {
 		return zapcore.NewMultiWriteSyncer(zapcore.AddSync(os.Stdout), zapcore.AddSync(fileWriter)), err
 	}
 	return zapcore.AddSync(fileWriter), err

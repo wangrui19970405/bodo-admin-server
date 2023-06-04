@@ -21,14 +21,14 @@ func NewWriter(w logger.Writer) *writer {
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 func (w *writer) Printf(message string, data ...interface{}) {
 	var logZap bool
-	switch global.WUSHI_CONFIG.System.DbType {
+	switch global.BODO_CONFIG.System.DbType {
 	case "mysql":
-		logZap = global.WUSHI_CONFIG.Mysql.LogZap
+		logZap = global.BODO_CONFIG.Mysql.LogZap
 	case "pgsql":
-		logZap = global.WUSHI_CONFIG.Pgsql.LogZap
+		logZap = global.BODO_CONFIG.Pgsql.LogZap
 	}
 	if logZap {
-		global.WUSHI_LOG.Info(fmt.Sprintf(message+"\n", data...))
+		global.BODO_LOG.Info(fmt.Sprintf(message+"\n", data...))
 	} else {
 		w.Writer.Printf(message, data...)
 	}

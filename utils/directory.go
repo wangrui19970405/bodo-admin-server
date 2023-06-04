@@ -41,9 +41,9 @@ func CreateDir(dirs ...string) (err error) {
 			return err
 		}
 		if !exist {
-			global.WUSHI_LOG.Debug("create directory" + v)
+			global.BODO_LOG.Debug("create directory" + v)
 			if err := os.MkdirAll(v, os.ModePerm); err != nil {
-				global.WUSHI_LOG.Error("create directory"+v, zap.Any(" error:", err))
+				global.BODO_LOG.Error("create directory"+v, zap.Any(" error:", err))
 				return err
 			}
 		}

@@ -17,18 +17,18 @@ type BaseMenuService struct{}
 //@return: err error
 
 func (baseMenuService *BaseMenuService) DeleteBaseMenu(id int) (err error) {
-	err = global.WUSHI_DB.Preload("MenuBtn").Preload("Parameters").Where("parent_id = ?", id).First(&system.SysBaseMenu{}).Error
+	err = global.BODO_DB.Preload("MenuBtn").Preload("Parameters").Where("parent_id = ?", id).First(&system.SysBaseMenu{}).Error
 	if err != nil {
 		var menu system.SysBaseMenu
-		db := global.WUSHI_DB.Preload("SysAuthoritys").Where("id = ?", id).First(&menu).Delete(&menu)
-		err = global.WUSHI_DB.Delete(&system.SysBaseMenuParameter{}, "sys_base_menu_id = ?", id).Error
-		err = global.WUSHI_DB.Delete(&system.SysBaseMenuBtn{}, "sys_base_menu_id = ?", id).Error
-		err = global.WUSHI_DB.Delete(&system.SysAuthorityBtn{}, "sys_menu_id = ?", id).Error
+		db := global.BODO_DB.Preload("SysAuthoritys").Where("id = ?", id).First(&menu).Delete(&menu)
+		err = global.BODO_DB.Delete(&system.SysBaseMenuParameter{}, "sys_base_menu_id = ?", id).Error
+		err = global.BODO_DB.Delete(&system.SysBaseMenuBtn{}, "sys_base_menu_id = ?", id).Error
+		err = global.BODO_DB.Delete(&system.SysAuthorityBtn{}, "sys_menu_id = ?", id).Error
 		if err != nil {
 			return err
 		}
 		if len(menu.SysAuthoritys) > 0 {
-			err = global.WUSHI_DB.Model(&menu).Association("SysAuthoritys").Delete(&menu.SysAuthoritys)
+			err = global.BODO_DB.Model(&menu).Association("SysAuthoritys").Delete(&menu.SysAuthoritys)
 		} else {
 			err = db.Error
 			if err != nil {
@@ -63,22 +63,22 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 	upDateMap["icon"] = menu.Icon
 	upDateMap["sort"] = menu.Sort
 
-	err = global.WUSHI_DB.Transaction(func(tx *gorm.DB) error {
+	err = global.BODO_DB.Transaction(func(tx *gorm.DB) error {
 		db := tx.Where("id = ?", menu.ID).Find(&oldMenu)
 		if oldMenu.Name != menu.Name {
 			if !errors.Is(tx.Where("id <> ? AND name = ?", menu.ID, menu.Name).First(&system.SysBaseMenu{}).Error, gorm.ErrRecordNotFound) {
-				global.WUSHI_LOG.Debug("存在相同name修改失败")
+				global.BODO_LOG.Debug("存在相同name修改失败")
 				return errors.New("存在相同name修改失败")
 			}
 		}
 		txErr := tx.Unscoped().Delete(&system.SysBaseMenuParameter{}, "sys_base_menu_id = ?", menu.ID).Error
 		if txErr != nil {
-			global.WUSHI_LOG.Debug(txErr.Error())
+			global.BODO_LOG.Debug(txErr.Error())
 			return txErr
 		}
 		txErr = tx.Unscoped().Delete(&system.SysBaseMenuBtn{}, "sys_base_menu_id = ?", menu.ID).Error
 		if txErr != nil {
-			global.WUSHI_LOG.Debug(txErr.Error())
+			global.BODO_LOG.Debug(txErr.Error())
 			return txErr
 		}
 		if len(menu.Parameters) > 0 {
@@ -87,7 +87,7 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 			}
 			txErr = tx.Create(&menu.Parameters).Error
 			if txErr != nil {
-				global.WUSHI_LOG.Debug(txErr.Error())
+				global.BODO_LOG.Debug(txErr.Error())
 				return txErr
 			}
 		}
@@ -98,14 +98,14 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 			}
 			txErr = tx.Create(&menu.MenuBtn).Error
 			if txErr != nil {
-				global.WUSHI_LOG.Debug(txErr.Error())
+				global.BODO_LOG.Debug(txErr.Error())
 				return txErr
 			}
 		}
 
 		txErr = db.Updates(upDateMap).Error
 		if txErr != nil {
-			global.WUSHI_LOG.Debug(txErr.Error())
+			global.BODO_LOG.Debug(txErr.Error())
 			return txErr
 		}
 		return nil
@@ -120,6 +120,6 @@ func (baseMenuService *BaseMenuService) UpdateBaseMenu(menu system.SysBaseMenu) 
 //@return: menu system.SysBaseMenu, err error
 
 func (baseMenuService *BaseMenuService) GetBaseMenuById(id int) (menu system.SysBaseMenu, err error) {
-	err = global.WUSHI_DB.Preload("MenuBtn").Preload("Parameters").Where("id = ?", id).First(&menu).Error
+	err = global.BODO_DB.Preload("MenuBtn").Preload("Parameters").Where("id = ?", id).First(&menu).Error
 	return
 }

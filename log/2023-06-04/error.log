@@ -28,3 +28,4 @@
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:00:01.802	[31merror[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/service/system/sys_system.go:47	func utils.InitCPU() Failed	{"err": "not implemented yet"}
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:00:01.802	[31merror[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/api/v1/system/sys_system.go:84	获取失败!	{"error": "not implemented yet"}
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:19.711	[31merror[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:44	accept tcp [::]:5100: use of closed network connection
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 15:00:14.743	[31merror[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:44	accept tcp [::]:5100: use of closed network connection

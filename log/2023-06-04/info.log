@@ -17,3 +17,7 @@
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
 [github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 15:00:20.304	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/gorm.go:58	register table success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 15:00:20.305	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 15:00:20.305	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 15:00:20.305	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}

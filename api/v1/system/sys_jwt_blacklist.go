@@ -1,10 +1,10 @@
 package system
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/common/response"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/system"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
@@ -23,7 +23,7 @@ func (j *JwtApi) JsonInBlacklist(c *gin.Context) {
 	jwt := system.JwtBlacklist{Jwt: token}
 	err := jwtService.JsonInBlacklist(jwt)
 	if err != nil {
-		global.WUSHI_LOG.Error("jwt作废失败!", zap.Error(err))
+		global.BODO_LOG.Error("jwt作废失败!", zap.Error(err))
 		response.FailWithMessage("jwt作废失败", c)
 		return
 	}

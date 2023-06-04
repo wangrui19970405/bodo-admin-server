@@ -49,7 +49,7 @@ func (casbinService *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos [
 //@return: error
 
 func (casbinService *CasbinService) UpdateCasbinApi(oldPath string, newPath string, oldMethod string, newMethod string) error {
-	err := global.WUSHI_DB.Model(&gormadapter.CasbinRule{}).Where("v1 = ? AND v2 = ?", oldPath, oldMethod).Updates(map[string]interface{}{
+	err := global.BODO_DB.Model(&gormadapter.CasbinRule{}).Where("v1 = ? AND v2 = ?", oldPath, oldMethod).Updates(map[string]interface{}{
 		"v1": newPath,
 		"v2": newMethod,
 	}).Error
@@ -104,7 +104,7 @@ var (
 
 func (casbinService *CasbinService) Casbin() *casbin.CachedEnforcer {
 	once.Do(func() {
-		a, _ := gormadapter.NewAdapterByDB(global.WUSHI_DB)
+		a, _ := gormadapter.NewAdapterByDB(global.BODO_DB)
 		text := `
 		[request_definition]
 		r = sub, obj, act

@@ -9,10 +9,10 @@ import (
 	"github.com/wangrui19970405/wu-shi-admin/server/plugin/email/utils"
 	utils2 "github.com/wangrui19970405/wu-shi-admin/server/utils"
 
+	"github.com/gin-gonic/gin"
 	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/system"
 	"github.com/wangrui19970405/wu-shi-admin/server/service"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
@@ -53,7 +53,7 @@ func ErrorToEmail() gin.HandlerFunc {
 		if status != 200 {
 			subject := username + "" + record.Ip + "调用了" + record.Path + "报错了"
 			if err := utils.ErrorToEmail(subject, str); err != nil {
-				global.WUSHI_LOG.Error("ErrorToEmail Failed, err:", zap.Error(err))
+				global.BODO_LOG.Error("ErrorToEmail Failed, err:", zap.Error(err))
 			}
 		}
 	}

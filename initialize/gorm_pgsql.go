@@ -12,7 +12,7 @@ import (
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 func GormPgSql() *gorm.DB {
-	p := global.WUSHI_CONFIG.Pgsql
+	p := global.BODO_CONFIG.Pgsql
 	if p.Dbname == "" {
 		return nil
 	}

@@ -18,7 +18,7 @@ type OSS interface {
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 // Author [ccfish86](https://github.com/ccfish86)
 func NewOss() OSS {
-	switch global.WUSHI_CONFIG.System.OssType {
+	switch global.BODO_CONFIG.System.OssType {
 	case "local":
 		return &Local{}
 	case "qiniu":

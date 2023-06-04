@@ -112,7 +112,7 @@ func (initDBService *InitDBService) InitDB(conf request.InitDB) (err error) {
 	}
 
 	db := ctx.Value("db").(*gorm.DB)
-	global.WUSHI_DB = db
+	global.BODO_DB = db
 
 	if err = initHandler.InitTables(ctx, initializers); err != nil {
 		return err

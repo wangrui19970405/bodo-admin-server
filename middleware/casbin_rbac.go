@@ -1,11 +1,11 @@
 package middleware
 
 import (
+	"github.com/gin-gonic/gin"
 	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/common/response"
 	"github.com/wangrui19970405/wu-shi-admin/server/service"
 	"github.com/wangrui19970405/wu-shi-admin/server/utils"
-	"github.com/gin-gonic/gin"
 	"strconv"
 )
 
@@ -14,7 +14,7 @@ var casbinService = service.ServiceGroupApp.SystemServiceGroup.CasbinService
 // CasbinHandler 拦截器
 func CasbinHandler() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		if global.WUSHI_CONFIG.System.Env != "develop" {
+		if global.BODO_CONFIG.System.Env != "develop" {
 			waitUse, _ := utils.GetClaims(c)
 			//获取请求的PATH
 			obj := c.Request.URL.Path

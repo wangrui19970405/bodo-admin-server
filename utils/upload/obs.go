@@ -1,9 +1,9 @@
 package upload
 
 import (
-	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/huaweicloud/huaweicloud-sdk-go-obs/obs"
 	"github.com/pkg/errors"
+	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"mime/multipart"
 )
 
@@ -12,7 +12,7 @@ var HuaWeiObs = new(_obs)
 type _obs struct{}
 
 func NewHuaWeiObsClient() (client *obs.ObsClient, err error) {
-	return obs.New(global.WUSHI_CONFIG.HuaWeiObs.AccessKey, global.WUSHI_CONFIG.HuaWeiObs.SecretKey, global.WUSHI_CONFIG.HuaWeiObs.Endpoint)
+	return obs.New(global.BODO_CONFIG.HuaWeiObs.AccessKey, global.BODO_CONFIG.HuaWeiObs.SecretKey, global.BODO_CONFIG.HuaWeiObs.Endpoint)
 }
 
 func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath string, err error) {
@@ -25,7 +25,7 @@ func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath
 	input := &obs.PutObjectInput{
 		PutObjectBasicInput: obs.PutObjectBasicInput{
 			ObjectOperationInput: obs.ObjectOperationInput{
-				Bucket: global.WUSHI_CONFIG.HuaWeiObs.Bucket,
+				Bucket: global.BODO_CONFIG.HuaWeiObs.Bucket,
 				Key:    filename,
 			},
 			ContentType: file.Header.Get("content-type"),
@@ -43,7 +43,7 @@ func (o *_obs) UploadFile(file *multipart.FileHeader) (filename string, filepath
 	if err != nil {
 		return filepath, filename, errors.Wrap(err, "文件上传失败!")
 	}
-	filepath = global.WUSHI_CONFIG.HuaWeiObs.Path + "/" + filename
+	filepath = global.BODO_CONFIG.HuaWeiObs.Path + "/" + filename
 	return filepath, filename, err
 }
 
@@ -53,7 +53,7 @@ func (o *_obs) DeleteFile(key string) error {
 		return errors.Wrap(err, "获取华为对象存储对象失败!")
 	}
 	input := &obs.DeleteObjectInput{
-		Bucket: global.WUSHI_CONFIG.HuaWeiObs.Bucket,
+		Bucket: global.BODO_CONFIG.HuaWeiObs.Bucket,
 		Key:    key,
 	}
 	var output *obs.DeleteObjectOutput

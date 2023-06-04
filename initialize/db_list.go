@@ -10,7 +10,7 @@ const sys = "system"
 
 func DBList() {
 	dbMap := make(map[string]*gorm.DB)
-	for _, info := range global.WUSHI_CONFIG.DBList {
+	for _, info := range global.BODO_CONFIG.DBList {
 		if info.Disable {
 			continue
 		}
@@ -28,7 +28,7 @@ func DBList() {
 	// 做特殊判断,是否有迁移
 	// 适配低版本迁移多数据库版本
 	if sysDB, ok := dbMap[sys]; ok {
-		global.WUSHI_DB = sysDB
+		global.BODO_DB = sysDB
 	}
-	global.WUSHI_DBList = dbMap
+	global.BODO_DBList = dbMap
 }

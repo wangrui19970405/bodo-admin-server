@@ -1,19 +1,19 @@
-## WUSHI 邮件发送功能插件
+## BODO 邮件发送功能插件
 #### 开发者：GIN-VUE-ADMIN 官方
 
 ### 使用步骤
 
-#### 1. 前往WUSHI主程序下的initialize/router.go 在Routers 方法最末尾按照你需要的及安全模式添加本插件
+#### 1. 前往BODO主程序下的initialize/router.go 在Routers 方法最末尾按照你需要的及安全模式添加本插件
     例：
     本插件可以采用gva的配置文件 也可以直接写死内容作为配置 建议为gva添加配置文件结构 然后将配置传入
 	PluginInit(PrivateGroup, email.CreateEmailPlug(
-		global.WUSHI_CONFIG.Email.To,
-		global.WUSHI_CONFIG.Email.From,
-		global.WUSHI_CONFIG.Email.Host,
-		global.WUSHI_CONFIG.Email.Secret,
-		global.WUSHI_CONFIG.Email.Nickname,
-		global.WUSHI_CONFIG.Email.Port,
-		global.WUSHI_CONFIG.Email.IsSSL,
+		global.BODO_CONFIG.Email.To,
+		global.BODO_CONFIG.Email.From,
+		global.BODO_CONFIG.Email.Host,
+		global.BODO_CONFIG.Email.Secret,
+		global.BODO_CONFIG.Email.Nickname,
+		global.BODO_CONFIG.Email.Port,
+		global.BODO_CONFIG.Email.IsSSL,
 		))
 
     同样也可以再传入时写死
@@ -22,7 +22,7 @@
     "a@qq.com",
     "b@qq.com",
     "smtp.qq.com",
-    "global.WUSHI_CONFIG.Email.Secret",
+    "global.BODO_CONFIG.Email.Secret",
     "登录密钥",
     465,
     true,

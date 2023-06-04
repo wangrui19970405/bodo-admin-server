@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/mojocn/base64Captcha"
+	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"go.uber.org/zap"
 )
 
@@ -28,22 +28,22 @@ func (rs *RedisStore) UseWithCtx(ctx context.Context) base64Captcha.Store {
 }
 
 func (rs *RedisStore) Set(id string, value string) {
-	err := global.WUSHI_REDIS.Set(rs.Context, rs.PreKey+id, value, rs.Expiration).Err()
+	err := global.BODO_REDIS.Set(rs.Context, rs.PreKey+id, value, rs.Expiration).Err()
 	if err != nil {
-		global.WUSHI_LOG.Error("RedisStoreSetError!", zap.Error(err))
+		global.BODO_LOG.Error("RedisStoreSetError!", zap.Error(err))
 	}
 }
 
 func (rs *RedisStore) Get(key string, clear bool) string {
-	val, err := global.WUSHI_REDIS.Get(rs.Context, key).Result()
+	val, err := global.BODO_REDIS.Get(rs.Context, key).Result()
 	if err != nil {
-		global.WUSHI_LOG.Error("RedisStoreGetError!", zap.Error(err))
+		global.BODO_LOG.Error("RedisStoreGetError!", zap.Error(err))
 		return ""
 	}
 	if clear {
-		err := global.WUSHI_REDIS.Del(rs.Context, key).Err()
+		err := global.BODO_REDIS.Del(rs.Context, key).Err()
 		if err != nil {
-			global.WUSHI_LOG.Error("RedisStoreClearError!", zap.Error(err))
+			global.BODO_LOG.Error("RedisStoreClearError!", zap.Error(err))
 			return ""
 		}
 	}

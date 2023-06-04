@@ -13,10 +13,10 @@ import (
 
 	"github.com/wangrui19970405/wu-shi-admin/server/utils"
 
+	"github.com/gin-gonic/gin"
 	"github.com/wangrui19970405/wu-shi-admin/server/global"
 	"github.com/wangrui19970405/wu-shi-admin/server/model/system"
 	"github.com/wangrui19970405/wu-shi-admin/server/service"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
@@ -38,7 +38,7 @@ func OperationRecord() gin.HandlerFunc {
 			var err error
 			body, err = io.ReadAll(c.Request.Body)
 			if err != nil {
-				global.WUSHI_LOG.Error("read body from request error:", zap.Error(err))
+				global.BODO_LOG.Error("read body from request error:", zap.Error(err))
 			} else {
 				c.Request.Body = io.NopCloser(bytes.NewBuffer(body))
 			}
@@ -75,7 +75,7 @@ func OperationRecord() gin.HandlerFunc {
 		}
 
 		// 上传文件时候 中间件日志进行裁断操作
-		if strings.Contains(c.GetHeader("Content-Type"), "multipart/form-data")  {
+		if strings.Contains(c.GetHeader("Content-Type"), "multipart/form-data") {
 			if len(record.Body) > 1024 {
 				// 截断
 				newBody := respPool.Get().([]byte)
@@ -100,14 +100,14 @@ func OperationRecord() gin.HandlerFunc {
 		record.Latency = latency
 		record.Resp = writer.body.String()
 
-		if strings.Contains(c.Writer.Header().Get("Pragma"), "public")  ||
-			strings.Contains(c.Writer.Header().Get("Expires"), "0")  ||
+		if strings.Contains(c.Writer.Header().Get("Pragma"), "public") ||
+			strings.Contains(c.Writer.Header().Get("Expires"), "0") ||
 			strings.Contains(c.Writer.Header().Get("Cache-Control"), "must-revalidate, post-check=0, pre-check=0") ||
-			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/force-download")  ||
-			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/octet-stream")  ||
-			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/vnd.ms-excel")  ||
-			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/download")  ||
-			strings.Contains(c.Writer.Header().Get("Content-Disposition"), "attachment")  ||
+			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/force-download") ||
+			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/octet-stream") ||
+			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/vnd.ms-excel") ||
+			strings.Contains(c.Writer.Header().Get("Content-Type"), "application/download") ||
+			strings.Contains(c.Writer.Header().Get("Content-Disposition"), "attachment") ||
 			strings.Contains(c.Writer.Header().Get("Content-Transfer-Encoding"), "binary") {
 			if len(record.Resp) > 1024 {
 				// 截断
@@ -119,7 +119,7 @@ func OperationRecord() gin.HandlerFunc {
 		}
 
 		if err := operationRecordService.CreateSysOperationRecord(record); err != nil {
-			global.WUSHI_LOG.Error("create operation record error:", zap.Error(err))
+			global.BODO_LOG.Error("create operation record error:", zap.Error(err))
 		}
 	}
 }

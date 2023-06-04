@@ -28,14 +28,14 @@ func (h MysqlInitHandler) WriteConfig(ctx context.Context) error {
 	if !ok {
 		return errors.New("mysql config invalid")
 	}
-	global.WUSHI_CONFIG.System.DbType = "mysql"
-	global.WUSHI_CONFIG.Mysql = c
-	global.WUSHI_CONFIG.JWT.SigningKey = uuid.NewV4().String()
-	cs := utils.StructToMap(global.WUSHI_CONFIG)
+	global.BODO_CONFIG.System.DbType = "mysql"
+	global.BODO_CONFIG.Mysql = c
+	global.BODO_CONFIG.JWT.SigningKey = uuid.NewV4().String()
+	cs := utils.StructToMap(global.BODO_CONFIG)
 	for k, v := range cs {
-		global.WUSHI_VP.Set(k, v)
+		global.BODO_VP.Set(k, v)
 	}
-	return global.WUSHI_VP.WriteConfig()
+	return global.BODO_VP.WriteConfig()
 }
 
 // EnsureDB 创建数据库并初始化 mysql

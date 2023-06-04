@@ -12,7 +12,7 @@ import (
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 // Author [wangrui19970405](https://github.com/wangrui19970405)
 func GormMysql() *gorm.DB {
-	m := global.WUSHI_CONFIG.Mysql
+	m := global.BODO_CONFIG.Mysql
 	if m.Dbname == "" {
 		return nil
 	}

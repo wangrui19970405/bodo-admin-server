@@ -16,7 +16,7 @@ import (
 type SystemConfigService struct{}
 
 func (systemConfigService *SystemConfigService) GetSystemConfig() (conf config.Server, err error) {
-	return global.WUSHI_CONFIG, nil
+	return global.BODO_CONFIG, nil
 }
 
 // @description   set system config,
@@ -29,9 +29,9 @@ func (systemConfigService *SystemConfigService) GetSystemConfig() (conf config.S
 func (systemConfigService *SystemConfigService) SetSystemConfig(system system.System) (err error) {
 	cs := utils.StructToMap(system.Config)
 	for k, v := range cs {
-		global.WUSHI_VP.Set(k, v)
+		global.BODO_VP.Set(k, v)
 	}
-	err = global.WUSHI_VP.WriteConfig()
+	err = global.BODO_VP.WriteConfig()
 	return err
 }
 
@@ -44,15 +44,15 @@ func (systemConfigService *SystemConfigService) GetServerInfo() (server *utils.S
 	var s utils.Server
 	s.Os = utils.InitOS()
 	if s.Cpu, err = utils.InitCPU(); err != nil {
-		global.WUSHI_LOG.Error("func utils.InitCPU() Failed", zap.String("err", err.Error()))
+		global.BODO_LOG.Error("func utils.InitCPU() Failed", zap.String("err", err.Error()))
 		return &s, err
 	}
 	if s.Ram, err = utils.InitRAM(); err != nil {
-		global.WUSHI_LOG.Error("func utils.InitRAM() Failed", zap.String("err", err.Error()))
+		global.BODO_LOG.Error("func utils.InitRAM() Failed", zap.String("err", err.Error()))
 		return &s, err
 	}
 	if s.Disk, err = utils.InitDisk(); err != nil {
-		global.WUSHI_LOG.Error("func utils.InitDisk() Failed", zap.String("err", err.Error()))
+		global.BODO_LOG.Error("func utils.InitDisk() Failed", zap.String("err", err.Error()))
 		return &s, err
 	}
 

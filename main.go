@@ -21,17 +21,17 @@ import (
 // @name                        x-token
 // @BasePath                    /
 func main() {
-	global.WUSHI_VP = core.Viper() // 初始化Viper
+	global.BODO_VP = core.Viper() // 初始化Viper
 	initialize.OtherInit()
-	global.WUSHI_LOG = core.Zap() // 初始化zap日志库
-	zap.ReplaceGlobals(global.WUSHI_LOG)
-	global.WUSHI_DB = initialize.Gorm() // gorm连接数据库
+	global.BODO_LOG = core.Zap() // 初始化zap日志库
+	zap.ReplaceGlobals(global.BODO_LOG)
+	global.BODO_DB = initialize.Gorm() // gorm连接数据库
 	initialize.Timer()
 	initialize.DBList()
-	if global.WUSHI_DB != nil {
-		initialize.RegisterTables(global.WUSHI_DB) // 初始化表
+	if global.BODO_DB != nil {
+		initialize.RegisterTables(global.BODO_DB) // 初始化表
 		// 程序结束前关闭数据库链接
-		db, _ := global.WUSHI_DB.DB()
+		db, _ := global.BODO_DB.DB()
 		defer db.Close()
 	}
 	core.RunWindowsServer()

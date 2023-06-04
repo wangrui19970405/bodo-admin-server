@@ -18,15 +18,15 @@ import (
 )
 
 var (
-	WUSHI_DB     *gorm.DB
-	WUSHI_DBList map[string]*gorm.DB
-	WUSHI_REDIS  *redis.Client
-	WUSHI_CONFIG config.Server
-	WUSHI_VP     *viper.Viper
-	// WUSHI_LOG    *oplogging.Logger
-	WUSHI_LOG                 *zap.Logger
-	WUSHI_Timer               timer.Timer = timer.NewTimerTask()
-	WUSHI_Concurrency_Control             = &singleflight.Group{}
+	BODO_DB     *gorm.DB
+	BODO_DBList map[string]*gorm.DB
+	BODO_REDIS  *redis.Client
+	BODO_CONFIG config.Server
+	BODO_VP     *viper.Viper
+	// BODO_LOG    *oplogging.Logger
+	BODO_LOG                 *zap.Logger
+	BODO_Timer               timer.Timer = timer.NewTimerTask()
+	BODO_Concurrency_Control             = &singleflight.Group{}
 
 	BlackCache local_cache.Cache
 	lock       sync.RWMutex
@@ -36,14 +36,14 @@ var (
 func GetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()
-	return WUSHI_DBList[dbname]
+	return BODO_DBList[dbname]
 }
 
 // MustGetGlobalDBByDBName 通过名称获取db 如果不存在则panic
 func MustGetGlobalDBByDBName(dbname string) *gorm.DB {
 	lock.RLock()
 	defer lock.RUnlock()
-	db, ok := WUSHI_DBList[dbname]
+	db, ok := BODO_DBList[dbname]
 	if !ok || db == nil {
 		panic("db no init")
 	}
