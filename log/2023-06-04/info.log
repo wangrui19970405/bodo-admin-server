@@ -1,0 +1,19 @@
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:34:05.794	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:34:05.795	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:34:05.796	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:35:04.562	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:35:04.562	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:35:04.562	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 11:38:10.676	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/api/v1/system/sys_initdb.go:57	前往初始化数据库
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 12:04:00.905	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/gorm.go:58	register table success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 12:04:00.906	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 12:04:00.907	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 12:04:00.907	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 13:57:09.026	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/gorm.go:58	register table success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 13:57:09.027	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 13:57:09.028	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 13:57:09.028	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.427	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/gorm.go:58	register table success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:37	register swagger handler
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/initialize/router.go:75	router register success
+[github.com/wangrui19970405/wu-shi-admin/server]2023/06/04 - 14:13:24.428	[34minfo[0m	/Users/wangrui/Dev/Golang/gva/template/servertest/core/server.go:36	server run success on 	{"address": ":5100"}
